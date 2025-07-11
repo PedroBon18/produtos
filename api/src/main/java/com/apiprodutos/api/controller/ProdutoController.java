@@ -1,7 +1,5 @@
 package com.apiprodutos.api.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.apiprodutos.api.model.Produto;
 import com.apiprodutos.api.model.ProdutoRepository;
-
-
 
 @Controller
 public class ProdutoController {
@@ -25,16 +21,16 @@ public class ProdutoController {
         return "listar";
     }
 
-    @GetMapping("/cadatro")
+    @GetMapping("/cadastro") // Apresenta o formulario
     public String mostrarFormulario(Model model) {
         model.addAttribute("produto", new Produto());
-        return "cadastar";
+        return "cadastrar";
     }
     
-    @PostMapping("/cadatro")
+    @PostMapping("/cadastro") // Ocorre quando  usuario clicar no botão enviar
     public String cadastrarProdutos(Produto produto) {
         repository.save(produto);
-        return "cadastar";
+        return "redirect:/";
     }
 
 }
